@@ -1,0 +1,27 @@
+import kotlin.math.pow
+
+fun main() {
+    val scanner = Scanner(System.in)
+    print("Enter x: ")
+    val x = scanner.nextDouble()
+
+    var sum = 0.0
+    var term = 1.0
+    var k = 0
+
+    while (term >= 0.00001) {
+        sum += term
+        k++
+        term = x.pow(k) / factorial(k)
+    }
+
+    println("The value of the exponential function by series: $sum")
+    println("Number of terms: $k")
+
+    val expValue = Math.exp(x)
+    println("Value of the exponential function using the library: $expValue")
+}
+
+fun factorial(n: Int): Double {
+    return if (n == 0) 1.0 else n.toDouble() * factorial(n - 1)
+}
